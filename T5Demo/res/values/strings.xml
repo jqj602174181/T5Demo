@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">T5演示工具</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="unknow_idcardinfo">姓名：未知　　拼音：未知\n性别：未知　　民族：未知　　出生日期：未知\n发证机关：未知　　\n证件到期日：未知\n身份证号：未知\n地址：未知</string>
+
+</resources>

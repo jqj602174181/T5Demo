@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x200"
+    android:layout_height="@dimen/y100"
+    android:background="@color/grey" >
+
+    <TextView
+        android:id="@+id/TV_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        android:layout_centerHorizontal="true"
+        android:text="请输入要连接设备的蓝牙mac地址"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/x10" />
+
+    <EditText
+        android:id="@+id/et_mac"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y30"
+        android:layout_below="@id/TV_tip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y10"
+        android:textSize="@dimen/x12" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_mac"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y10"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/settings_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textSize="@dimen/x13" />
+
+        <TextView
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y10" />
+
+        <Button
+            android:id="@+id/settings_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="@dimen/x13" />
+    </LinearLayout>
+
+</RelativeLayout>

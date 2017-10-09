@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/desktop"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <!-- 身份证信息 -->
+
+        <include
+            android:id="@+id/FRAGMENT_IDCARDINFO"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y110"
+            android:layout_marginLeft="@dimen/x15"
+            layout="@layout/block_idcardinfo_reread" />
+
+        <!-- 分隔线 -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_marginTop="@dimen/y3"
+            android:background="@drawable/page_space_line" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/y10"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LabelFixedHStyle1"
+                android:layout_width="@dimen/x50"
+                android:text="IC卡:" />
+
+            <RadioGroup
+                android:id="@+id/RG_CARDPASS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/RB_Bankbook"
+                    style="@style/RBFixedHMRStyle1"
+                    android:layout_width="@dimen/x65"
+                    android:checked="true"
+                    android:text="接触式IC卡" />
+
+                <RadioButton
+                    android:id="@+id/RB_MagneticCard"
+                    style="@style/RBFixedHMRStyle1"
+                    android:layout_width="@dimen/x80"
+                    android:text="非接触式IC卡" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/EDIT_IC"
+                style="@style/TextEditTextStyle"
+                android:layout_width="@dimen/x150"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/BTN_ReadICCard"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="读IC卡" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/y8"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LabelFixedHStyle1"
+                android:layout_width="@dimen/x50"
+                android:text="磁卡:" />
+
+            <EditText
+                android:id="@+id/EDIT_Msg"
+                style="@style/TextEditTextStyle"
+                android:layout_width="@dimen/x245"
+                android:layout_marginLeft="@dimen/x15"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/BTN_ReadMsg"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="读磁卡" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/y8"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LabelFixedHStyle1"
+                android:layout_width="@dimen/x50"
+                android:text="密码键盘:" />
+
+            <EditText
+                android:id="@+id/EDIT_Password"
+                style="@style/TextEditTextStyle"
+                android:layout_width="@dimen/x180"
+                android:layout_marginLeft="@dimen/x15"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/BTN_ReadPassword"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="开启密码键盘" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginTop="@dimen/y8"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LabelFixedHStyle1"
+                android:layout_width="@dimen/x45"
+                android:text="手写签名:" />
+
+            <Button
+                android:id="@+id/BTN_Sign_Open"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="启动签名" />
+
+            <Button
+                android:id="@+id/BTN_Sign_Close"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="关闭签名" />
+
+            <Button
+                android:id="@+id/BTN_Sign_Get"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="获取签名" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginTop="@dimen/y8"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LabelFixedHStyle1"
+                android:layout_width="@dimen/x45"
+                android:text="指纹仪:" />
+
+            <Button
+                android:id="@+id/BTN_ReadFinger"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="读取" />
+
+            <Button
+                android:id="@+id/BTN_RegisterFinger"
+                style="@style/ReadCardBtnStyle"
+                android:layout_height="@dimen/y30"
+                android:layout_marginLeft="@dimen/x15"
+                android:text="登记" />
+
+            <ImageView
+                android:id="@+id/fingerImage"
+                android:layout_width="@dimen/x35"
+                android:layout_height="@dimen/y35"
+                android:layout_marginLeft="@dimen/x10"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BTN_Commit"
+        style="@style/ReadCardBtnStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="100dp"
+        android:text="提交"
+        android:textSize="40sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

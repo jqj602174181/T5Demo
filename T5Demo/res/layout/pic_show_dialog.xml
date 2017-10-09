@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x300"
+    android:layout_height="@dimen/y200"
+    android:background="@color/grey" >
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="@dimen/x27"
+        android:layout_height="@dimen/y30"
+        android:scaleType="fitXY"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/close" />
+
+    <ImageView
+        android:id="@+id/dialog_title_image"
+        android:layout_width="@dimen/x295"
+        android:layout_height="@dimen/y195"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY" />
+
+</RelativeLayout>

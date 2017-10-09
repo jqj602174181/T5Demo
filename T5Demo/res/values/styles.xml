@@ -1,0 +1,84 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <!-- 按钮样式 -->
+    <style name="BtnStyle">
+        <item name="android:textSize">@dimen/x13</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/nmnx_btn_selector</item>
+    </style>
+
+    <!-- 按钮样式 -->
+    <style name="ReadCardBtnStyle" parent="BtnStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/x8</item>
+        <item name="android:paddingRight">@dimen/x8</item>
+    </style>
+
+    <!-- 标签文字样式 -->
+    <style name="LabelStyle">
+        <item name="android:textSize">@dimen/x10</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="LabelFixedHStyle1" parent="LabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/y30</item>
+        <item name="android:gravity">center_vertical|right</item>
+    </style>
+
+    <!-- 单选按钮样式 -->
+    <style name="RBStyle">
+        <item name="android:textSize">@dimen/x10</item>
+        <item name="android:textColor">@drawable/component_text_selector</item>
+        <item name="android:button">@drawable/nmnx_rb_selector</item>
+    </style>
+
+    <style name="RBFixedHMRStyle1" parent="RBStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/y30</item>
+        <item name="android:layout_marginRight">@dimen/x10</item>
+    </style>
+
+    <!-- 输入框属性 -->
+    <style name="EditStyle">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/x10</item>
+        <item name="android:background">@drawable/nmnx_edit_selector</item>
+        <item name="android:imeOptions">actionDone</item>
+        <!-- 键盘变成完成 -->
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+
+    <!-- 普通文本输入框属性 -->
+    <style name="TextEditTextStyle" parent="EditStyle">
+        <item name="android:layout_height">@dimen/y28</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="MyDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

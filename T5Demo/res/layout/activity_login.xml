@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/desktop"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+
+    <ImageButton
+        android:id="@+id/IB_settings"
+        android:layout_width="@dimen/x18"
+        android:layout_height="@dimen/y20"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/x2"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="@dimen/y2"
+        android:src="@drawable/settings" />
+
+    <RelativeLayout
+        android:id="@+id/login_Block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y25" >
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="移 动 营 销"
+            android:textColor="#EA5404"
+            android:textSize="@dimen/x40" />
+
+        <EditText
+            android:id="@+id/account"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y35"
+            android:layout_below="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y15"
+            android:background="@drawable/edit_white_back"
+            android:hint="请输入帐号"
+            android:paddingLeft="@dimen/x5"
+            android:singleLine="true"
+            android:text="admin"
+            android:textSize="@dimen/x12" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y35"
+            android:layout_below="@+id/account"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y15"
+            android:background="@drawable/edit_white_back"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/x5"
+            android:singleLine="true"
+            android:textSize="@dimen/x12" />
+
+        <Button
+            android:id="@+id/login_Btn"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y35"
+            android:layout_below="@+id/password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y35"
+            android:background="@drawable/nmnx_btn_selector"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x20" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/connection_Block"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y30"
+        android:layout_below="@+id/login_Block"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/conn_block_back"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/x20"
+        android:paddingRight="@dimen/x20" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通信方式  :"
+            android:textColor="#8b8c8e"
+            android:textSize="@dimen/x12" />
+
+        <RadioGroup
+            android:id="@+id/rg_conn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/bt_conn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:button="@drawable/nmnx_rb_selector"
+                android:checked="true"
+                android:text="蓝牙"
+                android:textColor="#8b8c8e"
+                android:textSize="@dimen/x12" />
+
+            <RadioButton
+                android:id="@+id/hid_conn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:button="@drawable/nmnx_rb_selector"
+                android:text="USB HID"
+                android:textColor="#8b8c8e"
+                android:textSize="@dimen/x12" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="@dimen/x1"
+            android:layout_height="@dimen/y20"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="#8b8c8e" />
+
+        <ImageView
+            android:id="@+id/connection_flag"
+            android:layout_width="@dimen/x10"
+            android:layout_height="@dimen/y12"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@drawable/not_conn_flag" />
+
+        <TextView
+            android:id="@+id/tvBTState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="当前状态"
+            android:textColor="#8b8c8e"
+            android:textSize="@dimen/x12" />
+
+        <TextView
+            android:id="@+id/bt_conn_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:text="点击连接"
+            android:textColor="#fcab0e"
+            android:textSize="@dimen/x12" />
+    </LinearLayout>
+
+</RelativeLayout>

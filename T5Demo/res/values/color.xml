@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffffff</color>
+
+    <drawable name="white">#ffffffff</drawable>
+    <drawable name="t5_on_select">#00000000</drawable>
+
+    <color name="textColor">#ff333333</color>
+    <color name="framework_font_tip">#909090</color>
+    <color name="text_color">#414141</color>
+    <color name="grey">#AAAAAA</color>
+    <color name="text_normal">#333333</color>
+    <color name="text_unselected">#808080</color>
+    <color name="text_disabled">#bbbbbb</color>
+
+</resources>
