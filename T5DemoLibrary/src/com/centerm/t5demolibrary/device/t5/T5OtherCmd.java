@@ -10,20 +10,20 @@ import com.centerm.t5demolibrary.utils.TransDataFormat;
 
 import android.util.Log;
 
-public class T5Cmd extends T5BaseCmd{
+public class T5OtherCmd extends T5BaseCmd{
 
 	private static final String TAG = "T5Cmd";
-	private static T5Cmd instance;
+	private static T5OtherCmd instance;
 
-	private T5Cmd(){}
+	private T5OtherCmd(){}
 
 	// ´´½¨ÊµÀý
-	public static T5Cmd getInstance()
+	public static T5OtherCmd getInstance()
 	{
 		if (instance == null)
 		{
-			synchronized (T5Cmd.class) {
-				instance = new T5Cmd();
+			synchronized (T5OtherCmd.class) {
+				instance = new T5OtherCmd();
 			}
 		}
 		return instance;

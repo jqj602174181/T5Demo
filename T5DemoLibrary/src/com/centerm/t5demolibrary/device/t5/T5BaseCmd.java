@@ -64,7 +64,7 @@ public class T5BaseCmd {
 					m_bySwInfo[2] & 0xFF, m_bySwInfo[3] & 0xFF));
 			break;
 
-		case ErrorUtil.RET_T5_KEY_SUCCESS:
+		case ErrorUtil.RET_T5_KEY_SUCCESS: //密码键盘
 			for (int i = 1; i < StringUtil.GetVailArrayLen(m_bySwInfo,
 					(byte) 0xff); i++)
 			{
@@ -128,13 +128,13 @@ public class T5BaseCmd {
 			break;
 
 		case ErrorUtil.RET_T5_FAILED:
-			strBuffer.append("状态码:%02XH %02XH %02XH");
+			format = "状态码:%02XH %02XH %02XH";
 			strBuffer.append(String.format(format, m_bySwInfo[1] & 0xFF,
 					m_bySwInfo[2] & 0xFF, m_bySwInfo[3] & 0xFF, m_bySwInfo[0]));
 			break;
 
 		case ErrorUtil.RET_DEV_FAILED:
-			strBuffer.append("状态码:%02XH %02XH");
+			format = "状态码:%02XH %02XH";
 			strBuffer.append(String.format(format, m_bySwInfo[1] & 0xFF,
 					m_bySwInfo[2] & 0xFF, m_bySwInfo[0]));
 			break;
@@ -165,7 +165,7 @@ public class T5BaseCmd {
 			strBuffer.append("随机数不符合指定长度，请输入32位随机数!");
 			break;
 
-		case ErrorUtil.RET_T5_FINGER_SUCCESS:
+		case ErrorUtil.RET_T5_FINGER_SUCCESS: //指纹仪
 			strBuffer.append("指纹特征:");
 			for (int i = 1; i < StringUtil.GetVailArrayLen(m_bySwInfo,
 					(byte) 0x00, 3); i++)

@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.centerm.t5demolibrary.device.t5.T5Cmd;
+import com.centerm.t5demolibrary.device.t5.T5OtherCmd;
 import com.centerm.t5demolibrary.transfer.TransControl;
 import com.centerm.t5demolibrary.utils.ErrorUtil;
 import com.centerm.t5demolibrary.utils.StringUtil;
@@ -169,7 +169,7 @@ public class IDCardFunc{
 	public int getIDCardInfoOnce(String[] personInfo){
 		int nRet = ErrorUtil.RET_SUCCESS;
 		Log.d(TAG, "启动T5动画");
-		T5Cmd.getInstance().start_mv((byte) 0);
+		T5OtherCmd.getInstance().start_mv((byte) 0);
 
 		// 寻卡
 		nRet = mIDCardCmd.searchCard();
@@ -201,7 +201,7 @@ public class IDCardFunc{
 		}
 
 		Log.d(TAG, "关闭卡机动画");
-		T5Cmd.getInstance().stop_mv((byte) 0);
+		T5OtherCmd.getInstance().stop_mv((byte) 0);
 
 		return nRet;
 	}

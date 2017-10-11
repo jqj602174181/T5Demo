@@ -2,7 +2,7 @@ package com.centerm.t5demolibrary.device.finger;
 
 import android.os.SystemClock;
 
-import com.centerm.t5demolibrary.device.t5.T5Cmd;
+import com.centerm.t5demolibrary.device.t5.T5OtherCmd;
 import com.centerm.t5demolibrary.transfer.TransControl;
 import com.centerm.t5demolibrary.utils.StringUtil;
 
@@ -37,12 +37,12 @@ public class FingerFunc{
 	}
 
 	public int openFinger(){
-		int nRet = T5Cmd.getInstance().start_mv((byte) INT_TYPE);
+		int nRet = T5OtherCmd.getInstance().start_mv((byte) INT_TYPE);
 		return nRet;
 	}
 
 	public int closeFinger(){
-		int nRet = T5Cmd.getInstance().stop_mv((byte) INT_TYPE);
+		int nRet = T5OtherCmd.getInstance().stop_mv((byte) INT_TYPE);
 		return nRet;
 	}
 
@@ -53,13 +53,13 @@ public class FingerFunc{
 	 */
 	public int readFingerFeature(int timeOut){
 		byte[] timeout = StringUtil.intToBytes(timeOut);
-		int nRet = T5Cmd.getInstance().start_mv((byte) INT_TYPE);
-		TransControl.getInstance().setTimeOut((timeOut+2) * 1000);
+		int nRet = T5OtherCmd.getInstance().start_mv((byte) INT_TYPE);
+		TransControl.getInstance().setTimeOut(timeOut);
 		if(nRet >= 0){
 			SystemClock.sleep(1500);
 			nRet = mFingerCmd.readFingerFeature(timeout);
 		}
-		nRet = T5Cmd.getInstance().stop_mv((byte) INT_TYPE);
+		nRet = T5OtherCmd.getInstance().stop_mv((byte) INT_TYPE);
 
 		return nRet;
 	}
@@ -71,13 +71,13 @@ public class FingerFunc{
 	 */
 	public int registerFingerFeature(int timeOut){
 		byte[] timeout = StringUtil.intToBytes(timeOut);
-		int nRet = T5Cmd.getInstance().start_mv((byte) INT_TYPE);
-		TransControl.getInstance().setTimeOut((timeOut+2) * 1000);
+		int nRet = T5OtherCmd.getInstance().start_mv((byte) INT_TYPE);
+		TransControl.getInstance().setTimeOut(timeOut);
 		if(nRet >= 0){
 			SystemClock.sleep(1500);
 			nRet = mFingerCmd.registerFingerFeature(timeout);
 		}
-		nRet = T5Cmd.getInstance().stop_mv((byte) INT_TYPE);
+		nRet = T5OtherCmd.getInstance().stop_mv((byte) INT_TYPE);
 
 		return nRet;
 	}

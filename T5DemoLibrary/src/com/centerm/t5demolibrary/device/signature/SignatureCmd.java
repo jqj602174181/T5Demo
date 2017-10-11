@@ -16,7 +16,7 @@ class SignatureCmd extends T5BaseCmd{
 	private byte[] realEncryptData;
 
 	protected SignatureCmd(){
-		
+
 	}
 
 	public byte[] getEncryptData()
@@ -225,7 +225,6 @@ class SignatureCmd extends T5BaseCmd{
 			int packetLength, int allLength)
 	{
 		int nRet = ErrorUtil.RET_SUCCESS;
-		TransControl.getInstance().setPKG_SIZE(packetLength);
 		int nReqLen = 0;
 		byte[] offset = StringUtil.StringToHexAscii(String.valueOf(ioffset));
 		if ((ioffset + ilength) > allLength)

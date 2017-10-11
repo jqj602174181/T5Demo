@@ -31,6 +31,7 @@ public class TransControl{
 
 	private int mDevType = DEV_USBHID;
 	private int timeout = 5000;
+	private int tempTimeout = 5;
 
 	private static final int MSG_TYPE_BLUETOOTH_PAIR = 11;
 	private static final int MSG_TYPE_FIND_USB = 12;
@@ -40,7 +41,7 @@ public class TransControl{
 	private BlueToothTrans mBlueTooth = null;
 	private UsbConnReceiver mUsbReceiver = null;
 	private BluetoothConnReceiver mBluetoothReceiver = null;
-	private boolean isShortConnect = true;
+	private boolean isShortConnect = false;
 
 	private UpdateHandler mHandler;
 	private BluetoothEnabler mBluetoothEnabler;
@@ -101,7 +102,10 @@ public class TransControl{
 		initDevice();
 	}
 
-	public void onDestroy(){
+	/**
+	 * 设备资源释放
+	 */
+	public void unInit(){
 		if (mBluetoothReceiver != null)
 			mContext.unregisterReceiver(mBluetoothReceiver);
 
@@ -133,7 +137,8 @@ public class TransControl{
 	 */
 	public void setTimeOut(int nTimeOut)
 	{
-		this.timeout = nTimeOut;
+		this.timeout = ((nTimeOut+2) * 1000);
+		this.tempTimeout = nTimeOut;
 	}
 
 	/**
@@ -141,7 +146,7 @@ public class TransControl{
 	 */
 	public int getTimeout()
 	{
-		return timeout;
+		return tempTimeout;
 	}
 
 	/**

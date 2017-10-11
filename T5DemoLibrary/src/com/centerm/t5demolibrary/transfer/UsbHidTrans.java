@@ -27,7 +27,7 @@ import android.util.Log;
  */
 class UsbHidTrans
 {
-	private static final int PKG_SIZE = 64;
+	private static final int PKG_SIZE = 1024; //一次接收1024
 	// public static final int VendorID = 0x2B46;
 	// public static final int ProductID = 0xBE01;
 	// public static final int ProductID = 0xBE55;
@@ -313,6 +313,9 @@ class UsbHidTrans
 		// + String.format("%02x", byReq[j]));
 		// }
 
+		//发送数据前清空缓存
+		clearCache();
+
 		// 发送数据判断是否成功
 		int ret = mDeviceConnection.bulkTransfer(epOut, byReq, nReqLen, timeout);
 		if (nReqLen != ret)
@@ -325,6 +328,19 @@ class UsbHidTrans
 		ret = readHid(byRes, nResLen, condition, timeout);
 
 		return ret;
+	}
+
+	protected void clearCache(){ //清空hid缓存
+		if(mDeviceConnection == null || epIn == null){
+			return;
+		}
+		byte[] byTransferData = new byte[m_nPKG_SIZE];
+		while(true){
+			int nTransferDataLen = mDeviceConnection.bulkTransfer(epIn, byTransferData, m_nPKG_SIZE, mTimeoutDiffReset);
+			if(nTransferDataLen <= 0){
+				break;
+			}
+		}
 	}
 
 	protected int readHid(byte[] byRes, int nResLen, EndOfRead condition, int timeout)

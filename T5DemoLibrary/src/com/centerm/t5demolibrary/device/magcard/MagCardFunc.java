@@ -1,6 +1,6 @@
 package com.centerm.t5demolibrary.device.magcard;
 
-import com.centerm.t5demolibrary.device.t5.T5Cmd;
+import com.centerm.t5demolibrary.device.t5.T5OtherCmd;
 
 /**
  *  ´ÅÌõ¿¨
@@ -43,9 +43,9 @@ public class MagCardFunc{
 	}
 
 	public int readTrack(MagCardInfo magCardInfo){
-		T5Cmd.getInstance().start_mv((byte) 3);
+		T5OtherCmd.getInstance().start_mv((byte) 3);
 		int ret = magCardCmd.readTrack(magCardInfo);
-		T5Cmd.getInstance().stop_mv((byte) 3);
+		T5OtherCmd.getInstance().stop_mv((byte) 3);
 		return ret;
 	}
 

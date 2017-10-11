@@ -56,6 +56,8 @@ RadioGroup.OnCheckedChangeListener, OnMesBackListener{
 
 		TransControl.getInstance().init(mContext, this);
 		TransControl.getInstance().setShortConnect(false);
+		TransControl.getInstance().setVID(0x2B46);
+		TransControl.getInstance().setPID(0xBB01);
 
 		initView();
 		setDevType();
@@ -146,7 +148,7 @@ RadioGroup.OnCheckedChangeListener, OnMesBackListener{
 	{
 		if (ErrorUtil.LOG_DEBUG)
 			Log.i(TAG, "onDestroy");
-		TransControl.getInstance().onDestroy();
+		TransControl.getInstance().unInit();
 		super.onDestroy();
 	}
 

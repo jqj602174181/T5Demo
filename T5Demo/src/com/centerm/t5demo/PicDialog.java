@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -34,6 +35,7 @@ public class PicDialog extends Dialog {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.setContentView(R.layout.pic_show_dialog);
 		this.setCanceledOnTouchOutside(false);
 		imgView = (ImageView) this.findViewById(R.id.dialog_title_image);

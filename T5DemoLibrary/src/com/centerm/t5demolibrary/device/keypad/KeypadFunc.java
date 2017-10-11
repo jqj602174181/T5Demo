@@ -35,9 +35,13 @@ public class KeypadFunc{
 	public int startKeypad(int timeOut){
 		byte[] timeout = StringUtil.intToBytes(timeOut);
 		int nRet = mKeypadCmd.setTimeout(timeout);
-		TransControl.getInstance().setTimeOut((timeOut+2) * 1000);
+		TransControl.getInstance().setTimeOut(timeOut);
 		nRet = mKeypadCmd.enterKey();
 
 		return nRet;
+	}
+
+	public int closeKeyPad(){
+		return mKeypadCmd.closeKeyboard();
 	}
 }

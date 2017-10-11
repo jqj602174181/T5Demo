@@ -50,6 +50,7 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 	private Button mReadIcCardBtn;
 	private Button mReadMagCardBtn;
 	private Button mKeypadOpenBtn;
+	private Button mKeypadCloseBtn;
 	private Button mFingerReadBtn;
 	private Button mFingerRegisterBtn;
 
@@ -61,8 +62,6 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 	private EditText mEt_password;
 	private RadioButton RB_Bankbook, RB_MagneticCard;
 
-	private ICCardData data = new ICCardData();
-
 	private HashMap<Integer, Button> m_hashBtns;
 
 	@Override
@@ -72,7 +71,7 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 		setContentView(R.layout.activity_baseinfo);
 
 		mContext = this;
-		
+
 		HandlerThread mWayHandlerThread = new HandlerThread(TAG);
 		mWayHandlerThread.start();
 		mHandler = new UpdateHandler(this, mWayHandlerThread.getLooper());
@@ -88,6 +87,7 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 		mReadIcCardBtn = (Button)findViewById(R.id.BTN_ReadICCard);
 		mReadMagCardBtn = (Button)findViewById(R.id.BTN_ReadMsg);
 		mKeypadOpenBtn = (Button)findViewById(R.id.BTN_ReadPassword);
+		mKeypadCloseBtn = (Button)findViewById(R.id.BTN_ClosePassword);
 		mFingerReadBtn = (Button)findViewById(R.id.BTN_ReadFinger);
 		mFingerRegisterBtn = (Button)findViewById(R.id.BTN_RegisterFinger);
 		mSignOpenBtn.setOnClickListener(this);
@@ -97,6 +97,7 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 		mReadIcCardBtn.setOnClickListener(this);
 		mReadMagCardBtn.setOnClickListener(this);
 		mKeypadOpenBtn.setOnClickListener(this);
+		mKeypadCloseBtn.setOnClickListener(this);
 		mFingerReadBtn.setOnClickListener(this);
 		mFingerRegisterBtn.setOnClickListener(this);
 
@@ -236,6 +237,8 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 						}
 					});
 
+					ICCardData data = new ICCardData();
+
 					if(RB_Bankbook.isChecked()){ //接触式
 						data.setCardStyle(1);
 						nRet = ICCardFunc.getInstance().getICCardInfo(data); //调用读取IC卡
@@ -292,10 +295,16 @@ public class BaseInfoActivity extends Activity implements View.OnClickListener, 
 		if(v.getId() == R.id.BTN_Sign_Close){ //关闭签名
 			TransControl.getInstance().setUserCancel(true);
 			SystemClock.sleep(500);
-			int nRet = SignatureFunc.getInstance().signOff();
+			SignatureFunc.getInstance().signOff();
 			setButtonsEnable(v.getId(), true);
 			TransControl.getInstance().setUserCancel(false);
 			return;
+		}else if(v.getId() == R.id.BTN_ClosePassword){
+			TransControl.getInstance().setUserCancel(true);
+			SystemClock.sleep(500);
+			KeypadFunc.getInstance().closeKeyPad();
+			setButtonsEnable(v.getId(), true);
+			TransControl.getInstance().setUserCancel(false);
 		}
 		Message msg = mHandler.obtainMessage(MSG_TYPE_EVENT_CLICK, v);
 		mHandler.sendMessage(msg);
