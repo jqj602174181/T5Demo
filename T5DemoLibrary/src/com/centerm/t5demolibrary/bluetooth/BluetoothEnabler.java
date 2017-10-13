@@ -128,10 +128,11 @@ public final class BluetoothEnabler {
 		}
 
 		BluetoothDevice mDevice = mLocalAdapter.getRemoteDevice(mac);
+		Log.e(TAG, "mDevice.getBondState():" + mDevice.getBondState());
 		if (mDevice.getBondState() == BluetoothDevice.BOND_NONE)
 		{
 			if (ErrorUtil.LOG_DEBUG)
-				Log.i(TAG, "Pairing++正在配对...");
+				Log.i(TAG, "Pairing++无配对，需要配对...");
 
 			// 取消扫描，否则匹配会不稳定
 			mLocalAdapter.stopScanning();
@@ -140,9 +141,13 @@ public final class BluetoothEnabler {
 				Log.e(TAG, "createBond失败!");
 				return -3;
 			}
-
+		}else if(mDevice.getBondState() == BluetoothDevice.BOND_BONDING){
+			if (ErrorUtil.LOG_DEBUG)
+				Log.i(TAG, "Pairing++正在配对...");
 			return 1;
+		}else if(mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
+			return 2;
 		}
 		return 0;
-	};
+	}
 }

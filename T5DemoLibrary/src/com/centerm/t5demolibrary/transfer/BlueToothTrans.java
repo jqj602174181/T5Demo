@@ -16,9 +16,7 @@ import com.centerm.t5demolibrary.utils.StringUtil;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -500,121 +498,6 @@ class BlueToothTrans
 				Log.e(TAG, "createBond失败!");
 				mHandler.postDelayed(mEnableThread, 100);
 			}
-		}
-	}
-
-	private class BlutoothConnReceiver extends BroadcastReceiver
-	{
-		@Override
-		public void onReceive(Context context, Intent intent)
-		{
-			String result = null;
-			int state = 0;
-
-			if (intent.getAction().equals(BluetoothAdapter.ACTION_STATE_CHANGED))
-			{
-				state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-				result = updateBluetoothStateChange(state);
-			}
-			else if (intent.getAction().equals(BluetoothDevice.ACTION_BOND_STATE_CHANGED))
-			{
-				BluetoothDevice btDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-
-				state = btDevice.getBondState();
-				result = updateBluetoothBondStateChange(state);
-			}
-			else if (intent.getAction().equals(BluetoothDevice.ACTION_PAIRING_REQUEST))
-			{
-				setPairPin(intent);
-			}
-
-			Log.i(TAG, "onReceive+++result:" + result);
-		}
-
-		private void setPairPin(Intent intent)
-		{
-			// 获得设备, 配对类型、随机配对密码
-			BluetoothDevice btDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-
-			// 地址
-			String address = btDevice.getAddress();
-			int type = intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_VARIANT, BluetoothDevice.ERROR);
-
-			if (ErrorUtil.LOG_DEBUG)
-				Log.i(TAG, "setPairPin+++type:" + type);
-
-			if (type == BluetoothDevice.PAIRING_VARIANT_PIN)
-			{
-				if (ErrorUtil.LOG_DEBUG)
-					Log.d(TAG, "setPairPin+++设置配对Pin");
-
-				String pin = "002396";
-				byte[] byPin = pin.getBytes();
-				btDevice.setPin(byPin);
-			}
-			else if (type == BluetoothDevice.PAIRING_VARIANT_PASSKEY_CONFIRMATION)
-			{
-				if (ErrorUtil.LOG_DEBUG)
-					Log.d(TAG, "setPairPin+++开始密钥配对");
-
-				CachedBluetoothDevice.setPairingConfirmation(btDevice, true);
-			}
-			else
-			{
-				if (ErrorUtil.LOG_DEBUG)
-					Log.d(TAG, "setPairPin+++无法与\"" + address + "\"进行配对:未支持的配对方式");
-			}
-		}
-
-		private String updateBluetoothBondStateChange(int state)
-		{
-			String result = null;
-			switch (state)
-			{
-			case BluetoothDevice.BOND_BONDING:
-				result = "正在配对...";
-				break;
-			case BluetoothDevice.BOND_BONDED:
-				result = "配对成功";
-				mConneced = ErrorUtil.RET_SUCCESS;
-				mHandler.sendEmptyMessage(MSG_TYPE_EVENT_PAIRING);
-				break;
-			case BluetoothDevice.BOND_NONE:
-				result = "配对失败";
-				mConneced = ErrorUtil.RET_BLUETOOTH_PAIR_CANCLED;
-				mHandler.sendEmptyMessage(MSG_TYPE_EVENT_PAIRING);
-			default:
-				break;
-			}
-
-			return result;
-		}
-
-		private String updateBluetoothStateChange(int state)
-		{
-			String result = null;
-
-			switch (state)
-			{
-			case BluetoothAdapter.STATE_TURNING_ON:
-				result = "正在打开...";
-				break;
-			case BluetoothAdapter.STATE_ON:
-				result = "蓝牙已打开";
-				// 通知打开完成
-				mHandler.sendEmptyMessage(MSG_TYPE_EVENT_ENABLE);
-				break;
-			case BluetoothAdapter.STATE_TURNING_OFF:
-				result = "正在关闭...";
-				break;
-			case BluetoothAdapter.STATE_OFF:
-				result = "蓝牙已关闭";
-				break;
-			default:
-				break;
-			}
-
-			return result;
 		}
 	}
 

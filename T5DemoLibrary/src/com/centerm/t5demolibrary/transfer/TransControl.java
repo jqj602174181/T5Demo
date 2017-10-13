@@ -510,7 +510,7 @@ public class TransControl{
 	// 不能更新UI
 	private void findBlueTooth()
 	{
-		String result;
+		String result = "待定";
 		if (ErrorUtil.LOG_DEBUG)
 			Log.i(TAG, "findBlueTooth++++");
 		int nRet = mBluetoothEnabler.pairing(remoteMac);
@@ -522,10 +522,13 @@ public class TransControl{
 		case -2:
 			result = "蓝牙MAC错误";
 			break;
+		case -3:
+			result = "取消配对或配对失败";
+			break;
 		case 1:
 			result = "正在配对...";
 			break;
-		default:
+		case 2:
 			result = "配对成功";
 			break;
 		}
@@ -722,14 +725,14 @@ public class TransControl{
 			String result = null;
 			switch (state) {
 			case BluetoothAdapter.STATE_TURNING_ON:
-				result = "正在打开...";
+				result = "蓝牙正在打开...";
 				break;
 			case BluetoothAdapter.STATE_ON:
 				result = "蓝牙已打开";
 				handleBluetoothPairing();
 				break;
 			case BluetoothAdapter.STATE_TURNING_OFF:
-				result = "正在关闭...";
+				result = "蓝牙正在关闭...";
 				break;
 			case BluetoothAdapter.STATE_OFF:
 				result = "蓝牙已关闭";
